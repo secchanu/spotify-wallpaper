@@ -1,0 +1,51 @@
+* {
+  font-family: sans-serif;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.background {
+  position: fixed;
+  z-index: 0;
+}
+
+.progressbar {
+  position: fixed;
+  z-index: 100;
+}
+
+.song {
+  position: absolute;
+  top: .6944vh;
+  left: 0;
+}
+
+.user {
+  position: absolute;
+  bottom: 5vh;
+  left: 1vw;
+}
+
+.control {
+  position: absolute;
+  bottom: 5vh;
+  right: 1vw;
+}
+
+.clock {
+  position: absolute;
+  top: .6944vh;
+  right: 1vw;
+}
+
+.popup {
+  pointer-events: none;
+  z-index: 101;
+  position: fixed;
+  top:  0;
+  left: 0;
+}

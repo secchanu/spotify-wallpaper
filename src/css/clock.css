@@ -1,0 +1,14 @@
+.clock {
+  display: inline-block;
+  padding: 1.5vmin 2vmin 0.5vmin;
+  text-align: right;
+  color: #FFFFFF;
+}
+
+.clock .date {
+  font-size: 3vh;
+}
+
+.clock .time {
+  font-size: 5vh;
+}

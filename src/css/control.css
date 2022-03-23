@@ -1,0 +1,66 @@
+.control {
+  padding: 2vmin;
+}
+
+.control > * {
+  width: 35vmin;
+}
+
+.control .panel {
+  position: relative;
+  display: flex;
+  top: 1vmin;
+  left: 0;
+  justify-content: space-between;
+}
+
+.control .panel > * {
+  padding: 1vmin;
+}
+
+.control .disabled > * {
+  filter: brightness(50%);
+}
+
+.control .panel > :not(.play) {
+  margin-top: .7vmin;
+}
+
+.control .panel > * > img {
+  width: 5vmin;
+  height: 5vmin;
+  padding-top: 1vmin;
+}
+
+.control .panel:not(.disabled) > * > img:hover {
+  padding-top: 0vmin;
+}
+
+.control .panel:not(.disabled) > * > img:active {
+  padding-top: .5vmin;
+}
+
+.control .panel > .play > img {
+  width: 6vmin;
+  height: 6vmin;
+}
+
+.control .volume {
+  position: relative;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
+  height: 3vmin;
+  padding: 0 1vmin 0;
+}
+
+.control .volume > img {
+  width: 3vmin;
+  height: 3vmin;
+  margin-right: 1vmin;
+}
+
+.control .volume .bar {
+  width: 83%;
+  height: 100%;
+}
