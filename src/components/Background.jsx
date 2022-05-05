@@ -52,9 +52,9 @@ export default function Background(props) {
       const y = (v * Math.sin(i * fan)) + (vmax / 2);
       return [x, y];
     };
-    audioArray.push(audioArray[0]);
-    audioArray.forEach((a, i) => {
-      const [x, y] = getXY(a, i)
+    const arr = [...audioArray, audioArray[0]];
+    arr.forEach((a, i) => {
+      const [x, y] = getXY(a, i);
       if (i === 0) {
         context.moveTo(x, y);
       } else {
@@ -64,16 +64,14 @@ export default function Background(props) {
     context.lineWidth = vmin / 200;
     context.strokeStyle = color ?? "#fff";
     context.stroke();
-  }, [audioArray]);
+  }, [audioArray, color]);
 
   React.useEffect(() => {
     const canvas = document.getElementById("canvas");
     if (!canvas) return;
     canvas.className = "";
-    window.requestAnimationFrame((time) => {
-      window.requestAnimationFrame((time) => {
-        canvas.className = "canvas";
-      });
+    window.requestAnimationFrame(() => {
+      canvas.className = "canvas";
     });
   }, [state?.item?.id]);
   
