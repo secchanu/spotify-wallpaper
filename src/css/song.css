@@ -22,11 +22,11 @@
 } 
 
 .song .artists {
-  font-size: 3vh;
+  font-size: 3vmin;
 }
 
 .song .title > p {
-  font-size: 5vh;
+  font-size: 5vmin;
 }
 
 .song .item .scroll {

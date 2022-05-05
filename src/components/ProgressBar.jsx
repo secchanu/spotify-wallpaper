@@ -21,7 +21,7 @@ export default function ProgressBar(props) {
 
   return (
     <div className="progressbar">
-      <input className="bar" type="range" max={state?.item?.duration_ms ?? 1} value={prog ?? progress_ms} onChange={(e) => setProg(e.target.value)} onMouseUp={() => changeSeek(prog)} />
+      <input className="bar" type="range" disabled={!state?.item?.duration_ms} max={state?.item?.duration_ms ?? 1} value={prog ?? progress_ms} onChange={(e) => setProg(e.target.value)} onMouseUp={() => changeSeek(prog)} />
     </div>
   );
 }

@@ -6,9 +6,9 @@
 }
 
 .clock .date {
-  font-size: 3vh;
+  font-size: 3vmin;
 }
 
 .clock .time {
-  font-size: 5vh;
+  font-size: 5vmin;
 }
