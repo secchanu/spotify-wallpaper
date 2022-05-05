@@ -5,7 +5,7 @@ import "../css/clock.css";
 const interval = 500;
 
 function getClock() {
-  const weeks = new Array("Sun", "Mon", "Thu", "Wed", "Thr", "Fri", "Sat");
+  const weeks = new Array("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
   const now = new Date();
   const y = now.getFullYear();
   const mo = ("00" + (now.getMonth() + 1)).slice(-2);
