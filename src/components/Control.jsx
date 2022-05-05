@@ -12,7 +12,6 @@ import repeat_off from "../image/icon/repeat_white_24dp.svg";
 import repeat_on from "../image/icon/repeat_on_white_24dp.svg";
 import repeat_one_on from "../image/icon/repeat_one_on_white_24dp.svg";
 import volume_off from "../image/icon/volume_off_white_24dp.svg";
-import volume_down from "../image/icon/volume_down_white_24dp.svg";
 import volume_up from "../image/icon/volume_up_white_24dp.svg";
 
 import { putPause, putPlay, postPrevious, postNext, putShuffle, putRepeat, putVolume } from "../js/api.js";
@@ -64,8 +63,8 @@ export default function User(props) {
         </div>
       </div>
       <div className={disable ? "volume disabled" : "volume"}>
-        <img src={(vol ?? volume_percent) === 0 ? volume_off : (vol ?? volume_percent) < 50 ? volume_down : volume_up} onClick={disable ? () => { } : () => { changeVolume(0)}} />
-        <input className="bar" type="range" value={vol ?? volume_percent} onChange={(e) => setVol(e.target.value)} onMouseUp={() => changeVolume(vol)}/>
+        <img src={(vol ?? volume_percent) === 0 ? volume_off : volume_up} onClick={disable ? () => { } : () => { changeVolume(0)}} />
+        <input className="bar" type="range" disabled={disable} value={vol ?? volume_percent} onChange={(e) => setVol(e.target.value)} onMouseUp={() => changeVolume(vol)}/>
       </div>
     </div>
   );
