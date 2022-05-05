@@ -18,6 +18,7 @@ const interval = 1 * 1000;
 export default function Layout(props) {
   const refresh_token = props.refresh_token;
   const audioArray = props.audioArray;
+  const custom = props.custom;
 
   const test = !refresh_token;
 
@@ -100,12 +101,12 @@ export default function Layout(props) {
   return (
     <div className="container">
       <Background state={state} audioArray={audioArray} color={color} saved={saved} test={test} />
-      <ProgressBar state={state} setProgress={setProgress} />
-      {(state?.item?.id || test) && <Song key={state?.item?.id} state={state} test={test} />}
-      <User key={user?.id} user={user} test={test} />
-      <Control state={state} setShuffle={setShuffle} setPlaying={setPlaying} setRepeat={setRepeat} setVolume={setVolume} />
+      {custom.progressbar && <ProgressBar state={state} setProgress={setProgress} />}
+      {custom.song && ((state?.item?.id || test) && <Song key={state?.item?.id} state={state} test={test} />)}
+      {custom.user && <User key={user?.id} user={user} test={test} />}
+      {custom.control && <Control state={state} setShuffle={setShuffle} setPlaying={setPlaying} setRepeat={setRepeat} setVolume={setVolume} />}
       {oldItem && <Popup state={state} oldItem={oldItem} setOldItem={setOldItem} />}
-      <Clock />
+      {custom.clock && <Clock />}
     </div>
   );
 }
