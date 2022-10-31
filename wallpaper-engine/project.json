@@ -1,0 +1,190 @@
+{
+  "contentrating": "Everyone",
+  "description": "[url=https://accounts.spotify.com/authorize?client_id=e60b56054b374870aeaa34eea36742a9&response_type=code&redirect_uri=https://script.google.com/macros/s/AKfycby20ybWP3zxrQGoMCkqDHbQAa3sgtOl88NVUGS_i9ZLlQxJjTXPys30MqHF_Bv5zJYyyw/exec&scope=user-read-playback-state%20user-modify-playback-state%20user-library-read]ここ[/url]から認証し、表示された文字列をrefresh_tokenに入力してください",
+  "file": "index.html",
+  "general": {
+    "properties": {
+      "bottomleft": {
+        "options": [
+          {
+            "label": "song",
+            "value": "song"
+          },
+          {
+            "label": "clock",
+            "value": "clock"
+          },
+          {
+            "label": "user",
+            "value": "user"
+          },
+          {
+            "label": "control",
+            "value": "control"
+          }
+        ],
+        "order": 203,
+        "text": "Bottom-Left",
+        "type": "combo",
+        "value": "user"
+      },
+      "bottomright": {
+        "options": [
+          {
+            "label": "song",
+            "value": "song"
+          },
+          {
+            "label": "clock",
+            "value": "clock"
+          },
+          {
+            "label": "user",
+            "value": "user"
+          },
+          {
+            "label": "control",
+            "value": "control"
+          }
+        ],
+        "order": 204,
+        "text": "Bottom-Right",
+        "type": "combo",
+        "value": "control"
+      },
+      "contentsSettings": {
+        "order": 200,
+        "text": "<br/><br/><h3>Contents Settings</h3>"
+      },
+      "marginSettings": {
+        "order": 300,
+        "text": "<br/><br/><h3>Margin Settings</h3>"
+      },
+      "margintop": {
+        "order": 301,
+        "text": "margin-top",
+        "type": "textinput",
+        "value": "0"
+      },
+      "marginbottom": {
+        "order": 302,
+        "text": "margin-bottom",
+        "type": "textinput",
+        "value": "48"
+      },
+      "marginleft": {
+        "order": 303,
+        "text": "margin-left",
+        "type": "textinput",
+        "value": "0"
+      },
+      "marginright": {
+        "order": 304,
+        "text": "margin-right",
+        "type": "textinput",
+        "value": "0"
+      },
+      "progressbarblank": {
+        "order": 205,
+        "text": "<br/>"
+      },
+      "progressbar": {
+        "options": [
+          {
+            "label": "top",
+            "value": "top"
+          },
+          {
+            "label": "bottom",
+            "value": "bottom"
+          },
+          {
+            "label": "both",
+            "value": "both"
+          },
+          {
+            "label": "none",
+            "value": "none"
+          }
+        ],
+        "order": 206,
+        "text": "progressbar",
+        "type": "combo",
+        "value": "top"
+      },
+      "refresh_token": {
+        "order": 101,
+        "text": "Refresh Token<br/><small>Check the workshop page to see a guide on how to generate a token.</small><br/><br/>",
+        "type": "textinput",
+        "value": ""
+      },
+      "schemecolor": {
+        "order": 0,
+        "text": "ui_browse_properties_scheme_color",
+        "type": "color",
+        "value": "0 0 0"
+      },
+      "spotifySettings": {
+        "order": 100,
+        "text": "<h3>Spotify Settings</h3>"
+      },
+      "topleft": {
+        "options": [
+          {
+            "label": "song",
+            "value": "song"
+          },
+          {
+            "label": "clock",
+            "value": "clock"
+          },
+          {
+            "label": "user",
+            "value": "user"
+          },
+          {
+            "label": "control",
+            "value": "control"
+          }
+        ],
+        "order": 201,
+        "text": "Top-Left",
+        "type": "combo",
+        "value": "song"
+      },
+      "topright": {
+        "options": [
+          {
+            "label": "song",
+            "value": "song"
+          },
+          {
+            "label": "clock",
+            "value": "clock"
+          },
+          {
+            "label": "user",
+            "value": "user"
+          },
+          {
+            "label": "control",
+            "value": "control"
+          }
+        ],
+        "order": 202,
+        "text": "Top-Right",
+        "type": "combo",
+        "value": "clock"
+      }
+    },
+    "supportsaudioprocessing": true
+  },
+  "preview": "preview.png",
+  "tags": ["Music"],
+  "title": "Spotify-Wallpaper",
+  "type": "web",
+  "version": 1,
+  "visibility": "public",
+  "workshopid": "2782322519",
+  "workshopurl": "steam://url/CommunityFilePage/2782322519"
+}
