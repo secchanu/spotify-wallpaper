@@ -98,7 +98,7 @@ const Component: FunctionComponent<Props> = (props) => {
           />
         );
       default:
-        return <div></div>;
+        return <div id={`position${position}`} about="none" />;
     }
   };
 

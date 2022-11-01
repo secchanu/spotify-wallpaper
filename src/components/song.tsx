@@ -64,7 +64,7 @@ const Component: FunctionComponent<Props> = (props) => {
       (neighborType === "song" ? 0.5 * width : neighborElem?.clientWidth ?? 0) -
       (progressElem.current?.clientWidth ?? 0) -
       ((margin.at(1) ?? 0) + (margin.at(3) ?? 0)) -
-      60;
+      100;
     setThreshold(space);
   }, [contents, width, position, margin, duration]);
 
