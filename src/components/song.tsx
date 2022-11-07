@@ -14,7 +14,7 @@ const msToStr = (ms: number) => {
 };
 
 const longStr = (str: string) => {
-  return `${str}　　　　　${str}　　　　　`;
+  return `${str}　　　　　　${str}　　　　　　`;
 };
 
 type Props = {

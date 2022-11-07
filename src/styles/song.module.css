@@ -42,7 +42,7 @@
 }
 
 .progress {
-  margin: 0.5em;
+  margin: 0.5em 10px;
   background-color: var(--spotify-color-black);
   white-space: nowrap;
   color: var(--spotify-color-white);

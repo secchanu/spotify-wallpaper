@@ -1,6 +1,6 @@
 {
 	"contentrating" : "Everyone",
-	"description" : "※This is unofficial\n\n[url=https://secchanu.com/app/spotify/token]このリンク[/url]からSpotifyでログインし、表示された文字列をプロパティのrefresh_tokenに入力してください。\n\n曲の操作はSpotify Premiumユーザーのみ利用可能です。\n\nプリセットにtokenを含んだまま公開しないように注意してください。\n\n\nTo generate a token, you can goto [url=https://secchanu.com/app/spotify/token]this link[/url]\n\nOnce you're on the site, you should be able to login to connect your Spotify account.\nThe page should then generate a code. Copy and paste this code into wallpaper engine in the \"refresh_token\" textbox.\n\nControl of songs is only available to Spotify Premium user\n\nDO NOT publish presets with your token, unless you want people to see what music you're listening to...",
+	"description" : "※This is unofficial\n\n[url=https://secchanu.com/app/spotify/token]このリンク[/url]からSpotifyでログインし、表示された文字列をプロパティのrefresh_tokenに入力してください。\n\n曲の操作はSpotify Premiumユーザーのみ利用可能です。\n\nプリセットにtokenを含んだまま公開しないように注意してください。\n\nソースコード: https://github.com/secchanu/spotify-wallpaper\n\n\nTo generate a token, you can goto [url=https://secchanu.com/app/spotify/token]this link[/url]\n\nOnce you're on the site, you should be able to login to connect your Spotify account.\nThe page should then generate a code. Copy and paste this code into wallpaper engine in the \"refresh_token\" textbox.\n\nControl of songs is only available to Spotify Premium user\n\nDO NOT publish presets with your token, unless you want people to see what music you're listening to...\n\nSource code: https://github.com/secchanu/spotify-wallpaper",
 	"file" : "index.html",
 	"general" : 
 	{
@@ -220,8 +220,8 @@
 	"preview" : "preview.png",
 	"tags" : [ "Music" ],
 	"title" : "Spotify-Wallpaper",
-	"type" : "Web",
-	"version" : 3,
+	"type" : "web",
+	"version" : 4,
 	"visibility" : "public",
 	"workshopid" : "2782322519",
 	"workshopurl" : "steam://url/CommunityFilePage/2782322519"

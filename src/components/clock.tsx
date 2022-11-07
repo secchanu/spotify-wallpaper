@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 
 import styles from "@/styles/app/spotify/wallpaper/clock.module.css";
 
-const interval = 500;
-
 const weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const getClock = () => {
@@ -34,7 +32,7 @@ const Component: FunctionComponent<Props> = (props) => {
       const clock = getClock();
       setNow(clock);
     };
-    const id = setInterval(setClock, interval);
+    const id = setInterval(setClock, 500);
     return () => {
       clearInterval(id);
     };

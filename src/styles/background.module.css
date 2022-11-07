@@ -13,7 +13,7 @@
   filter: brightness(25%) blur(9px);
 }
 .keeper .background {
-  animation: toKeeper 3s linear forwards;
+  animation: toKeeper 3s forwards;
 }
 @keyframes toKeeper {
   from {
@@ -33,7 +33,7 @@
   width: 100%;
   height: 100%;
   filter: opacity(0);
-  animation: toVisible 0.5s linear 3s forwards;
+  animation: toVisible 0.5s 3s forwards;
 }
 
 .disk {
@@ -48,7 +48,7 @@
   width: 50vmin;
   border-radius: 50%;
   filter: opacity(0);
-  animation: toVisible 1s linear 1.5s forwards, rotation 30s linear 3s infinite;
+  animation: toVisible 1s 1.5s forwards, rotation 30s linear 3s infinite;
 }
 .playing .disk {
   animation-play-state: running, running;

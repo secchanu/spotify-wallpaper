@@ -2,6 +2,7 @@ import type { FunctionComponent } from "react";
 
 import { useState, useEffect, useRef } from "react";
 import useViewSize from "./useViewSize";
+import useAudioListener from "./useAudioListener";
 
 import Vibrant from "node-vibrant";
 
@@ -15,38 +16,35 @@ type Props = {
   margin: number[];
   playbackState: SpotifyApi.CurrentPlaybackResponse | undefined;
   mySavedTracks?: SpotifyApi.UsersSavedTracksResponse;
-  audioArray: number[];
 };
 const Component: FunctionComponent<Props> = (props) => {
   const margin = props.margin;
   const playbackState = props.playbackState;
   const mySavedTracks = props.mySavedTracks;
-  const audioArray = props.audioArray;
 
   const image = playbackState?.item?.album.images.at(0)?.url;
   const playing = playbackState?.is_playing;
 
+  const prevImage = useRef<string>();
   const [color, setColor] = useState<string>();
-  const [prevImage, setPrevImage] = useState<string>();
   const [keepImage, setKeepImage] = useState<string>();
-
-  const getColor = (path: string | undefined) => {
-    if (!path) return;
-    const vibrant = Vibrant.from(path);
-    vibrant.getPalette((_, palette) => setColor(palette?.Muted?.hex));
-  };
-  if (image !== prevImage) {
-    getColor(image);
-    setPrevImage(image);
-  }
-
   const canvas = useRef<HTMLCanvasElement>(null);
   const [width, height] = useViewSize();
+  const audioArray = useAudioListener();
+
+  if (image !== prevImage.current) {
+    prevImage.current = image;
+    if (image) {
+      const vibrant = Vibrant.from(image);
+      vibrant.getPalette((_, palette) => setColor(palette?.Muted?.hex));
+    }
+  }
 
   const minDir = Number(width < height);
   const diff =
     margin.filter((_, i) => i % 2 === minDir).reduce((acc, m) => acc + m, 0) /
     2;
+
   useEffect(() => {
     if (!canvas.current) return;
     canvas.current.width = width;
@@ -79,11 +77,13 @@ const Component: FunctionComponent<Props> = (props) => {
   }, [width, height, audioArray, color, margin]);
 
   useEffect(() => {
-    if (playing) return;
     const images = mySavedTracks?.items
       .map((i) => i?.track?.album?.images?.at(0)?.url)
       .filter((s) => s);
-    if (!images?.length) return;
+    if (!images?.length) {
+      setKeepImage(undefined);
+      return;
+    }
     const updateKeepImage = () => {
       setKeepImage((k) => {
         const keeper = images

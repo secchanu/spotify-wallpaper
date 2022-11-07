@@ -13,23 +13,19 @@ import Popup from "./popup";
 
 import styles from "@/styles/app/spotify/wallpaper/layout.module.css";
 
-const interval = 1000;
-
 type Props = {
+  expires_at: Date | undefined;
   spotifyApi: SpotifyWebApi.SpotifyWebApiJs;
   contents: ("song" | "clock" | "user" | "control" | string | undefined)[];
   progressbar: "top" | "bottom" | "both" | string;
   margin: number[];
-  audioArray: number[];
 };
 const Component: FunctionComponent<Props> = (props) => {
+  const expires_at = props.expires_at;
   const spotifyApi = props.spotifyApi;
   const contents = props.contents;
   const progressbar = props.progressbar;
   const margin = props.margin;
-  const audioArray = props.audioArray;
-
-  const token = spotifyApi.getAccessToken();
 
   const [playbackState, setPlaybackState] =
     useState<SpotifyApi.CurrentPlaybackResponse>();
@@ -40,38 +36,43 @@ const Component: FunctionComponent<Props> = (props) => {
   const isPremium = me?.product === "premium";
 
   useEffect(() => {
-    if (!token) return;
+    if (!expires_at) {
+      setPlaybackState(undefined);
+      return;
+    }
     const updateState = async () => {
       const state = await spotifyApi.getMyCurrentPlaybackState();
       setPlaybackState(state);
     };
-    (async () => {
-      await updateState();
-    })();
-    const id = setInterval(updateState, interval);
-    return () => {
-      clearInterval(id);
-    };
+    updateState();
+    const id = setInterval(updateState, 1000);
+    return () => clearInterval(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
+  }, [expires_at]);
 
   useEffect(() => {
-    if (!token) return;
+    if (!expires_at) {
+      setMe(undefined);
+      return;
+    }
     (async () => {
       const user = await spotifyApi.getMe();
       setMe(user);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
+  }, [expires_at]);
 
   useEffect(() => {
-    if (playbackState || !token) return;
+    if (!expires_at) {
+      setMySavedTracks(undefined);
+      return;
+    }
     (async () => {
       const saved = await spotifyApi.getMySavedTracks({ limit: 50 });
       setMySavedTracks(saved);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [playbackState, token]);
+  }, [expires_at]);
 
   const getContent = (name: string | undefined, position: number) => {
     switch (name) {
@@ -110,7 +111,6 @@ const Component: FunctionComponent<Props> = (props) => {
           margin={margin}
           playbackState={playbackState}
           mySavedTracks={mySavedTracks}
-          audioArray={audioArray}
         />
       </div>
       <div
@@ -123,6 +123,10 @@ const Component: FunctionComponent<Props> = (props) => {
       >
         <div className={styles.center}>
           <div className={styles.upper}>
+            <div className={styles.contents}>
+              {getContent(contents.at(0), 0)}
+              {getContent(contents.at(1), 1)}
+            </div>
             {["both", "top"].includes(progressbar) && (
               <div className={styles.edge}>
                 <Progress
@@ -132,12 +136,12 @@ const Component: FunctionComponent<Props> = (props) => {
                 />
               </div>
             )}
-            <div className={styles.contents}>
-              {getContent(contents.at(0), 0)}
-              {getContent(contents.at(1), 1)}
-            </div>
           </div>
           <div className={styles.lower}>
+            <div className={styles.contents}>
+              {getContent(contents.at(2), 2)}
+              {getContent(contents.at(3), 3)}
+            </div>
             {["both", "bottom"].includes(progressbar) && (
               <div className={styles.edge}>
                 <Progress
@@ -147,10 +151,6 @@ const Component: FunctionComponent<Props> = (props) => {
                 />
               </div>
             )}
-            <div className={styles.contents}>
-              {getContent(contents.at(2), 2)}
-              {getContent(contents.at(3), 3)}
-            </div>
           </div>
         </div>
       </div>

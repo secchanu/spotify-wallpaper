@@ -13,7 +13,6 @@ const Application: FunctionComponent = () => {
   const [contents, setContents] = useState(["", "", "", ""]);
   const [progressbar, setProgressbar] = useState<string>();
   const [margin, setMargin] = useState([0, 0, 0, 0]);
-  const [audioArray, setAudioArray] = useState<number[]>([]);
 
   const updateContents = (index: number, value?: string) => {
     setContents((contents) => {
@@ -59,9 +58,6 @@ const Application: FunctionComponent = () => {
           updateMargin(3, properties["marginleft"].value);
       },
     };
-    window.wallpaperRegisterAudioListener?.((array: number[]) => {
-      setAudioArray(array.map((a) => Math.min(a, 1)));
-    });
   }, []);
 
   return (
@@ -70,7 +66,6 @@ const Application: FunctionComponent = () => {
       contents={contents}
       progressbar={progressbar}
       margin={margin}
-      audioArray={audioArray}
       domain={"https://secchanu.com"}
     />
   );

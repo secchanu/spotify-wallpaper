@@ -19,8 +19,7 @@
   height: 100%;
   background-color: var(--spotify-color-black);
   filter: opacity(0);
-  animation: toDark 0.5s linear forwards,
-    toDark 0.5s linear 2.5s reverse forwards;
+  animation: toDark 0.5s forwards, toDark 0.5s 2.5s reverse forwards;
 }
 @keyframes toDark {
   from {
@@ -100,7 +99,7 @@
   width: 100%;
   height: 100%;
   background-color: var(--spotify-color-black);
-  animation: toClear 0.5s linear 2.5s forwards;
+  animation: toClear 0.5s 2.5s forwards;
 }
 
 .splash {
@@ -112,7 +111,7 @@
   margin: auto;
   height: 15vmin;
   filter: opacity(0);
-  animation: toClear 0.5s linear 0.5s reverse forwards;
+  animation: toClear 0.5s 0.5s reverse forwards;
   display: flex;
   justify-content: center;
   align-items: center;

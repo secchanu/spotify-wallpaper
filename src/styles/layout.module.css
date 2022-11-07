@@ -42,11 +42,11 @@
 }
 .upper {
   top: 0;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 .lower {
   bottom: 0;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .edge {

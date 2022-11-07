@@ -1,6 +1,6 @@
 import type { FunctionComponent } from "react";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import useViewSize from "./useViewSize";
 
 import styles from "@/styles/app/spotify/wallpaper/popup.module.css";
@@ -16,14 +16,14 @@ const Component: FunctionComponent<Props> = (props) => {
   const item = playbackState?.item;
 
   const [oldItem, setOldItem] = useState<SpotifyApi.TrackObjectFull | null>();
-  const [prevItem, setPrevItem] = useState<SpotifyApi.TrackObjectFull | null>();
+  const prevItem = useRef<SpotifyApi.TrackObjectFull | null>();
+  const [width, height] = useViewSize();
 
-  if (item?.id !== prevItem?.id) {
-    setOldItem(prevItem);
-    setPrevItem(item);
+  if (item?.id !== prevItem.current?.id) {
+    setOldItem(prevItem.current);
+    prevItem.current = item;
   }
 
-  const [width, height] = useViewSize();
   const minDir = Number(width < height);
   const style = {
     top: `${margin.at(0)}px`,
