@@ -14,14 +14,14 @@ import Popup from "./popup";
 import styles from "@/styles/app/spotify/wallpaper/layout.module.css";
 
 type Props = {
-  expires_at: Date | undefined;
+  token: string | null;
   spotifyApi: SpotifyWebApi.SpotifyWebApiJs;
   contents: ("song" | "clock" | "user" | "control" | string | undefined)[];
   progressbar: "top" | "bottom" | "both" | string;
   margin: number[];
 };
 const Component: FunctionComponent<Props> = (props) => {
-  const expires_at = props.expires_at;
+  const token = props.token;
   const spotifyApi = props.spotifyApi;
   const contents = props.contents;
   const progressbar = props.progressbar;
@@ -36,7 +36,7 @@ const Component: FunctionComponent<Props> = (props) => {
   const isPremium = me?.product === "premium";
 
   useEffect(() => {
-    if (!expires_at) {
+    if (!token) {
       setPlaybackState(undefined);
       return;
     }
@@ -46,12 +46,13 @@ const Component: FunctionComponent<Props> = (props) => {
     };
     updateState();
     const id = setInterval(updateState, 1000);
-    return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [expires_at]);
+    return () => {
+      clearInterval(id);
+    };
+  }, [spotifyApi, token]);
 
   useEffect(() => {
-    if (!expires_at) {
+    if (!token) {
       setMe(undefined);
       return;
     }
@@ -59,11 +60,10 @@ const Component: FunctionComponent<Props> = (props) => {
       const user = await spotifyApi.getMe();
       setMe(user);
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [expires_at]);
+  }, [spotifyApi, token]);
 
   useEffect(() => {
-    if (!expires_at) {
+    if (!token) {
       setMySavedTracks(undefined);
       return;
     }
@@ -71,8 +71,7 @@ const Component: FunctionComponent<Props> = (props) => {
       const saved = await spotifyApi.getMySavedTracks({ limit: 50 });
       setMySavedTracks(saved);
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [expires_at]);
+  }, [spotifyApi, token]);
 
   const getContent = (name: string | undefined, position: number) => {
     switch (name) {

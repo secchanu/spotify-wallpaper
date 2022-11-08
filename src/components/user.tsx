@@ -4,7 +4,7 @@ import styles from "@/styles/app/spotify/wallpaper/user.module.css";
 
 type Props = {
   position: number;
-  me?: SpotifyApi.CurrentUsersProfileResponse;
+  me: SpotifyApi.CurrentUsersProfileResponse | undefined;
 };
 const Component: FunctionComponent<Props> = (props) => {
   const position = props.position;

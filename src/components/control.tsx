@@ -58,13 +58,11 @@ const Component: FunctionComponent<Props> = (props) => {
       play: playbackState?.is_playing,
       repeat: repeatNum === -1 ? undefined : repeatNum,
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playbackState]);
 
   useEffect(() => {
     if (ignore.current) return;
     setVolume(playbackState?.device?.volume_percent ?? 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playbackState]);
 
   return (

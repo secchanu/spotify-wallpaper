@@ -15,7 +15,7 @@ const interval = 60 * 1000;
 type Props = {
   margin: number[];
   playbackState: SpotifyApi.CurrentPlaybackResponse | undefined;
-  mySavedTracks?: SpotifyApi.UsersSavedTracksResponse;
+  mySavedTracks: SpotifyApi.UsersSavedTracksResponse | undefined;
 };
 const Component: FunctionComponent<Props> = (props) => {
   const margin = props.margin;
@@ -73,8 +73,7 @@ const Component: FunctionComponent<Props> = (props) => {
     context.lineWidth = rin / 50;
     context.strokeStyle = color ?? "#fff";
     context.stroke();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width, height, audioArray, color, margin]);
+  }, [width, height, audioArray, color, margin, diff]);
 
   useEffect(() => {
     const images = mySavedTracks?.items
@@ -97,7 +96,6 @@ const Component: FunctionComponent<Props> = (props) => {
       updateKeepImage();
     }, interval);
     return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mySavedTracks]);
 
   if (!playbackState)

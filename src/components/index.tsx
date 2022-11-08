@@ -23,17 +23,18 @@ const Component: FunctionComponent<Props> = (props) => {
   const domain = props.domain ?? "";
 
   const valid = useRef(false);
-  const [expires_at, setExpires_at] = useState<Date>();
+  const expires_at = useRef<number>();
+  const [token, setToken] = useState<string | null>(null);
+
+  spotifyApi.setAccessToken(token);
 
   useEffect(() => {
     valid.current = true;
-    setExpires_at(undefined);
-  }, [refresh_token]);
-
-  useEffect(() => {
+    expires_at.current = undefined;
     const checkToken = () => {
       if (!valid.current) return;
-      if (expires_at && expires_at > new Date()) return;
+      const date = new Date();
+      if (expires_at.current && expires_at.current > date.getTime()) return;
       console.log("check", `"${refresh_token}"`);
       valid.current = false;
       (async () => {
@@ -47,30 +48,30 @@ const Component: FunctionComponent<Props> = (props) => {
           valid.current = true;
           return;
         }
-        if (!data.access_token) {
-          spotifyApi.setAccessToken(null);
-          setExpires_at(undefined);
+        const access_token = data?.access_token;
+        if (!access_token) {
+          setToken(null);
+          expires_at.current = undefined;
           console.log("invalid");
           return;
         }
-        const access_token = data.access_token;
-        spotifyApi.setAccessToken(access_token);
-        const date = new Date();
+        setToken(access_token);
         date.setSeconds(date.getSeconds() + data.expires_in - 60);
-        setExpires_at(date);
+        expires_at.current = date.getTime();
         console.log(`expires_at: ${date}`);
         valid.current = true;
       })();
     };
     const id = setInterval(checkToken, 1000);
-    return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refresh_token, expires_at]);
+    return () => {
+      clearInterval(id);
+    };
+  }, [refresh_token, domain]);
 
   return (
     <Layout
       key={refresh_token}
-      expires_at={expires_at}
+      token={token}
       spotifyApi={spotifyApi}
       contents={contents}
       progressbar={progressbar}

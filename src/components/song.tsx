@@ -52,7 +52,6 @@ const Component: FunctionComponent<Props> = (props) => {
     if (songElem.current?.clientWidth) {
       setIsLongSong(songElem.current.clientWidth > threshold);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [threshold, artist, song]);
 
   useEffect(() => {

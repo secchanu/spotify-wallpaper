@@ -1,6 +1,6 @@
 {
   "name": "spotify-wallpaper",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "for Wallpaper Engine",
   "scripts": {
     "format": "prettier \"**/*.{ts,tsx,json,html,yml,css,scss,md}\" --check --write",

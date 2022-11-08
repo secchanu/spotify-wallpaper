@@ -24,7 +24,6 @@ const Component: FunctionComponent<Props> = (props) => {
   useEffect(() => {
     if (ignore.current) return;
     setProgress(playbackState?.progress_ms ?? 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playbackState]);
 
   return (

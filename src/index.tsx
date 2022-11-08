@@ -62,6 +62,7 @@ const Application: FunctionComponent = () => {
 
   return (
     <App
+      key={refresh_token}
       refresh_token={refresh_token}
       contents={contents}
       progressbar={progressbar}
