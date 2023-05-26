@@ -1,61 +1,61 @@
 .wrapper {
-  position: relative;
-  height: 100%;
-  display: flex;
+	position: relative;
+	height: 100%;
+	display: flex;
 }
 .wrapper.position0,
 .wrapper.position2 {
-  flex-direction: row-reverse;
-  justify-content: left;
+	flex-direction: row-reverse;
+	justify-content: left;
 }
 .wrapper.position1,
 .wrapper.position3 {
-  flex-direction: row;
-  justify-content: right;
+	flex-direction: row;
+	justify-content: right;
 }
 .wrapper.position0,
 .wrapper.position1 {
-  align-items: flex-start;
+	align-items: flex-start;
 }
 .wrapper.position2,
 .wrapper.position3 {
-  align-items: flex-end;
+	align-items: flex-end;
 }
 
 .name {
-  position: relative;
-  white-space: nowrap;
-  background-color: var(--spotify-color-black);
-  color: var(--spotify-color-white);
-  font-size: 30%;
-  border-radius: 0.4em;
-  padding: 0.3em 0.5em;
+	position: relative;
+	white-space: nowrap;
+	background-color: var(--spotify-color-black);
+	color: var(--spotify-color-white);
+	font-size: 30%;
+	border-radius: 0.4em;
+	padding: 0.3em 0.5em;
 }
 .position0 .name,
 .position2 .name {
-  left: -7vmin;
-  padding-left: 7vmin;
+	left: -7vmin;
+	padding-left: 7vmin;
 }
 .position1 .name,
 .position3 .name {
-  right: -7vmin;
-  padding-right: 7vmin;
+	right: -7vmin;
+	padding-right: 7vmin;
 }
 .position0 .name,
 .position1 .name {
-  top: 25%;
+	top: 25%;
 }
 .position2 .name,
 .position3 .name {
-  bottom: 25%;
+	bottom: 25%;
 }
 
 .icon {
-  position: relative;
-  height: calc(100% - 0.1em);
-  aspect-ratio: 1;
-  margin: 0.1em;
-  object-fit: cover;
-  border-radius: 50%;
-  background-color: var(--spotify-color-black);
+	position: relative;
+	height: calc(100% - 0.1em);
+	aspect-ratio: 1;
+	margin: 0.1em;
+	object-fit: cover;
+	border-radius: 50%;
+	background-color: var(--spotify-color-black);
 }

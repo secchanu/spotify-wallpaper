@@ -11,153 +11,158 @@ import User from "./user";
 import Control from "./control";
 import Popup from "./popup";
 
-import styles from "@/styles/app/spotify/wallpaper/layout.module.css";
+import styles from "../styles/layout.module.css";
 
 type Props = {
-  token: string | null;
-  spotifyApi: SpotifyWebApi.SpotifyWebApiJs;
-  contents: ("song" | "clock" | "user" | "control" | string | undefined)[];
-  progressbar: "top" | "bottom" | "both" | string;
-  margin: number[];
+	token: string | null;
+	spotifyApi: SpotifyWebApi.SpotifyWebApiJs;
+	contents: ("song" | "clock" | "user" | "control" | string | undefined)[];
+	progressbar: "top" | "bottom" | "both" | string;
+	margin: number[];
+	domain: string;
+	audio: boolean;
 };
 const Component: FunctionComponent<Props> = (props) => {
-  const token = props.token;
-  const spotifyApi = props.spotifyApi;
-  const contents = props.contents;
-  const progressbar = props.progressbar;
-  const margin = props.margin;
+	const token = props.token;
+	const spotifyApi = props.spotifyApi;
+	const contents = props.contents;
+	const progressbar = props.progressbar;
+	const margin = props.margin;
+	const domain = props.domain;
+	const audio = props.audio;
 
-  const [playbackState, setPlaybackState] =
-    useState<SpotifyApi.CurrentPlaybackResponse>();
-  const [me, setMe] = useState<SpotifyApi.CurrentUsersProfileResponse>();
-  const [mySavedTracks, setMySavedTracks] =
-    useState<SpotifyApi.UsersSavedTracksResponse>();
+	const [playbackState, setPlaybackState] =
+		useState<SpotifyApi.CurrentPlaybackResponse>();
+	const [me, setMe] = useState<SpotifyApi.CurrentUsersProfileResponse>();
+	const [mySavedTracks, setMySavedTracks] =
+		useState<SpotifyApi.UsersSavedTracksResponse>();
 
-  const isPremium = me?.product === "premium";
+	const isPremium = me?.product === "premium";
 
-  useEffect(() => {
-    if (!token) {
-      setPlaybackState(undefined);
-      return;
-    }
-    const updateState = async () => {
-      const state = await spotifyApi.getMyCurrentPlaybackState();
-      setPlaybackState(state);
-    };
-    updateState();
-    const id = setInterval(updateState, 1000);
-    return () => {
-      clearInterval(id);
-    };
-  }, [spotifyApi, token]);
+	useEffect(() => {
+		if (!token) {
+			setPlaybackState(undefined);
+			return;
+		}
+		const updateState = async () => {
+			const state = await spotifyApi.getMyCurrentPlaybackState();
+			setPlaybackState(state);
+		};
+		updateState();
+		const id = setInterval(updateState, 1000);
+		return () => {
+			clearInterval(id);
+		};
+	}, [spotifyApi, token]);
 
-  useEffect(() => {
-    if (!token) {
-      setMe(undefined);
-      return;
-    }
-    (async () => {
-      const user = await spotifyApi.getMe();
-      setMe(user);
-    })();
-  }, [spotifyApi, token]);
+	useEffect(() => {
+		if (!token) {
+			setMe(undefined);
+			return;
+		}
+		(async () => {
+			const user = await spotifyApi.getMe();
+			setMe(user);
+		})();
+	}, [spotifyApi, token]);
 
-  useEffect(() => {
-    if (!token) {
-      setMySavedTracks(undefined);
-      return;
-    }
-    (async () => {
-      const saved = await spotifyApi.getMySavedTracks({ limit: 50 });
-      setMySavedTracks(saved);
-    })();
-  }, [spotifyApi, token]);
+	useEffect(() => {
+		if (!token) {
+			setMySavedTracks(undefined);
+			return;
+		}
+		(async () => {
+			const saved = await spotifyApi.getMySavedTracks({ limit: 50 });
+			setMySavedTracks(saved);
+		})();
+	}, [spotifyApi, token]);
 
-  const getContent = (name: string | undefined, position: number) => {
-    switch (name) {
-      case "song":
-        return (
-          <Song
-            position={position}
-            margin={margin}
-            playbackState={playbackState}
-            contents={contents}
-          />
-        );
-      case "clock":
-        return <Clock position={position} />;
-      case "user":
-        return <User position={position} me={me} />;
-      case "control":
-        return (
-          <Control
-            position={position}
-            playbackState={playbackState}
-            spotifyApi={spotifyApi}
-            isPremium={isPremium}
-          />
-        );
-      default:
-        return <div id={`position${position}`} about="none" />;
-    }
-  };
+	const getContent = (name: string | undefined, position: number) => {
+		switch (name) {
+			case "song":
+				return (
+					<Song
+						position={position}
+						margin={margin}
+						playbackState={playbackState}
+						contents={contents}
+					/>
+				);
+			case "clock":
+				return <Clock position={position} />;
+			case "user":
+				return <User position={position} me={me} />;
+			case "control":
+				return (
+					<Control
+						position={position}
+						playbackState={playbackState}
+						spotifyApi={spotifyApi}
+						isPremium={isPremium}
+					/>
+				);
+			default:
+				return <div id={`position${position}`} about="none" />;
+		}
+	};
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.background}>
-        <Background
-          key={playbackState?.item?.id}
-          margin={margin}
-          playbackState={playbackState}
-          mySavedTracks={mySavedTracks}
-        />
-      </div>
-      <div
-        className={styles.flow}
-        style={{
-          gridTemplate: `${margin.at(0)}px 1fr ${margin.at(2)}px / ${margin.at(
-            3
-          )}px 1fr ${margin.at(1)}px`,
-        }}
-      >
-        <div className={styles.center}>
-          <div className={styles.upper}>
-            <div className={styles.contents}>
-              {getContent(contents.at(0), 0)}
-              {getContent(contents.at(1), 1)}
-            </div>
-            {["both", "top"].includes(progressbar) && (
-              <div className={styles.edge}>
-                <Progress
-                  playbackState={playbackState}
-                  spotifyApi={spotifyApi}
-                  isPremium={isPremium}
-                />
-              </div>
-            )}
-          </div>
-          <div className={styles.lower}>
-            <div className={styles.contents}>
-              {getContent(contents.at(2), 2)}
-              {getContent(contents.at(3), 3)}
-            </div>
-            {["both", "bottom"].includes(progressbar) && (
-              <div className={styles.edge}>
-                <Progress
-                  playbackState={playbackState}
-                  spotifyApi={spotifyApi}
-                  isPremium={isPremium}
-                />
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className={styles.popup}>
-        <Popup margin={margin} playbackState={playbackState} />
-      </div>
-    </div>
-  );
+	return (
+		<div className={styles.container}>
+			<div className={styles.background}>
+				<Background
+					key={playbackState?.item?.id}
+					margin={margin}
+					audio={audio}
+					playbackState={playbackState}
+					mySavedTracks={mySavedTracks}
+				/>
+			</div>
+			<div
+				className={styles.flow}
+				style={{
+					gridTemplate: `${margin.at(0)}px 1fr ${margin.at(2)}px / ${margin.at(
+						3,
+					)}px 1fr ${margin.at(1)}px`,
+				}}
+			>
+				<div className={styles.center}>
+					<div className={styles.upper}>
+						<div className={styles.contents}>
+							{getContent(contents.at(0), 0)}
+							{getContent(contents.at(1), 1)}
+						</div>
+						{["both", "top"].includes(progressbar) && (
+							<div className={styles.edge}>
+								<Progress
+									playbackState={playbackState}
+									spotifyApi={spotifyApi}
+									isPremium={isPremium}
+								/>
+							</div>
+						)}
+					</div>
+					<div className={styles.lower}>
+						<div className={styles.contents}>
+							{getContent(contents.at(2), 2)}
+							{getContent(contents.at(3), 3)}
+						</div>
+						{["both", "bottom"].includes(progressbar) && (
+							<div className={styles.edge}>
+								<Progress
+									playbackState={playbackState}
+									spotifyApi={spotifyApi}
+									isPremium={isPremium}
+								/>
+							</div>
+						)}
+					</div>
+				</div>
+			</div>
+			<div className={styles.popup}>
+				<Popup margin={margin} domain={domain} playbackState={playbackState} />
+			</div>
+		</div>
+	);
 };
 
 export default Component;

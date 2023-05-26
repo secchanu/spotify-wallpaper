@@ -1,10 +1,10 @@
 :root {
-  --spotify-color-green: #1d8954;
-  --spotify-color-white: #ffffff;
-  --spotify-color-black: #191414;
-  --spotify-font-family: sans-serif, "Helvetica Neue", "Helvetica", "Arial";
+	--spotify-color-green: #1d8954;
+	--spotify-color-white: #ffffff;
+	--spotify-color-black: #191414;
+	--spotify-font-family: sans-serif, "Helvetica Neue", "Helvetica", "Arial";
 }
 
 body {
-  text-size-adjust: none;
+	text-size-adjust: none;
 }

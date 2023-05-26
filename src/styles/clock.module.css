@@ -1,40 +1,40 @@
 .wrapper {
-  position: relative;
-  height: 100%;
+	position: relative;
+	height: 100%;
 }
 
 .clock {
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  padding: 0.1em 0.2em;
-  color: var(--spotify-color-white);
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	padding: 0.1em 0.2em;
+	color: var(--spotify-color-white);
 }
 .position0 .clock {
-  flex-direction: column;
-  align-items: flex-start;
+	flex-direction: column;
+	align-items: flex-start;
 }
 .position1 .clock {
-  flex-direction: column;
-  align-items: flex-end;
+	flex-direction: column;
+	align-items: flex-end;
 }
 .position2 .clock {
-  flex-direction: column-reverse;
-  align-items: flex-start;
+	flex-direction: column-reverse;
+	align-items: flex-start;
 }
 .position3 .clock {
-  flex-direction: column-reverse;
-  align-items: flex-end;
+	flex-direction: column-reverse;
+	align-items: flex-end;
 }
 
 .date {
-  width: fit-content;
-  white-space: nowrap;
-  font-size: 30%;
+	width: fit-content;
+	white-space: nowrap;
+	font-size: 30%;
 }
 
 .time {
-  width: fit-content;
-  white-space: nowrap;
-  font-size: 60%;
+	width: fit-content;
+	white-space: nowrap;
+	font-size: 60%;
 }

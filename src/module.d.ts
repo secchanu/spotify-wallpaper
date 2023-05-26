@@ -1,6 +1,6 @@
 declare module "*.css";
 
 declare module "*.png" {
-  const path: string;
-  export default path;
+	const path: { src: string };
+	export default path;
 }

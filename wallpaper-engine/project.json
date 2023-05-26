@@ -1,6 +1,6 @@
 {
 	"contentrating" : "Everyone",
-	"description" : "※非公式です\r\n\r\n[url=https://secchanu.com/app/spotify/token]このリンク[/url]からSpotifyでログインし、表示された文字列をプロパティのrefresh_tokenに入力してください。\r\n\r\n曲の操作はSpotify Premiumユーザーのみ利用可能です。\r\n\r\nプリセットにtokenを含んだまま公開しないように注意してください。\r\n\r\nソースコード: https://github.com/secchanu/spotify-wallpaper",
+	"description" : "※非公式です\n\n[url=https://secchanu.com/app/spotify-wallpaper/token]このリンク[/url] からSpotifyでログインし、表示された文字列をプロパティのrefresh_tokenに入力してください。\n\n曲の操作はSpotify Premiumユーザーのみ利用可能です。\n\nプリセットにtokenを含んだまま公開しないように注意してください。\n\n[url=https://github.com/secchanu/spotify-wallpaper]ソースコード[/url]",
 	"file" : "index.html",
 	"general" : 
 	{
@@ -220,8 +220,8 @@
 	"preview" : "preview.png",
 	"tags" : [ "Music" ],
 	"title" : "Spotify-Wallpaper",
-	"type" : "Web",
-	"version" : 6,
+	"type" : "web",
+	"version" : 7,
 	"visibility" : "public",
 	"workshopid" : "2782322519",
 	"workshopurl" : "steam://url/CommunityFilePage/2782322519"

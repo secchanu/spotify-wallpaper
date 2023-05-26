@@ -1,138 +1,145 @@
 .wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  animation: toHidden 0s steps(2, jump-none) 3s forwards;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	animation: toHidden 0s steps(2, jump-none) 3s forwards;
 }
 @keyframes toHidden {
-  from {
-    visibility: visible;
-  }
-  to {
-    visibility: hidden;
-  }
+	from {
+		visibility: visible;
+	}
+	to {
+		visibility: hidden;
+	}
 }
 
 .cover {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: var(--spotify-color-black);
-  filter: opacity(0);
-  animation: toDark 0.5s forwards, toDark 0.5s 2.5s reverse forwards;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: var(--spotify-color-black);
+	filter: opacity(0);
+	animation: toDark 0.5s forwards, toDark 0.5s 2.5s reverse forwards;
 }
 @keyframes toDark {
-  from {
-    filter: opacity(0);
-  }
-  to {
-    filter: opacity(50%);
-  }
+	from {
+		filter: opacity(0);
+	}
+	to {
+		filter: opacity(50%);
+	}
 }
 
 .old,
 .new {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  object-fit: cover;
-  aspect-ratio: 1;
-  width: 50vmin;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	object-fit: cover;
+	aspect-ratio: 1;
+	width: 50vmin;
 }
 
 .old {
-  border-radius: 50%;
-  animation: rotation 0.5s forwards, toLeft 1s 0.5s forwards;
+	border-radius: 50%;
+	animation: rotation 0.5s forwards, toLeft 1s 0.5s forwards;
 }
 @keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 @keyframes toLeft {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100vw);
-  }
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-100vw);
+	}
 }
 
 .new {
-  transform: translateX(100vw) scale(1.4);
-  animation: toCenter 1s 0.5s forwards, toDisk 0.5s 1.5s forwards,
-    toSmall 1s cubic-bezier(0.5, -0.3, 0.5, 0.7) 2s forwards;
+	transform: translateX(100vw) scale(1.4);
+	animation: toCenter 1s 0.5s forwards, toDisk 0.5s 1.5s forwards,
+		toSmall 1s cubic-bezier(0.5, -0.3, 0.5, 0.7) 2s forwards;
 }
 @keyframes toCenter {
-  from {
-    transform: translateX(100vw) scale(1.4);
-  }
-  to {
-    transform: translateX(0) scale(1.4);
-  }
+	from {
+		transform: translateX(100vw) scale(1.4);
+	}
+	to {
+		transform: translateX(0) scale(1.4);
+	}
 }
 @keyframes toDisk {
-  from {
-    border-radius: 0;
-  }
-  to {
-    border-radius: 50%;
-  }
+	from {
+		border-radius: 0;
+	}
+	to {
+		border-radius: 50%;
+	}
 }
 @keyframes toSmall {
-  from {
-    transform: scale(1.4);
-  }
-  to {
-    transform: scale(1);
-  }
+	from {
+		transform: scale(1.4);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+.screen {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	animation: toHidden 0s steps(2, jump-none) 4.5s forwards;
 }
 
 .bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: var(--spotify-color-black);
-  animation: toClear 0.5s 2.5s forwards;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: var(--spotify-color-black);
+	animation: toClear 0.5s 4s forwards;
 }
 
 .splash {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  height: 15vmin;
-  filter: opacity(0);
-  animation: toClear 0.5s 0.5s reverse forwards;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  color: var(--spotify-color-white);
-  font-size: 50%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	height: 15vmin;
+	filter: opacity(0);
+	animation: toClear 0.5s 0.5s reverse forwards;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	color: var(--spotify-color-white);
+	font-size: 50%;
 }
 @keyframes toClear {
-  from {
-    filter: opacity(100%);
-  }
-  to {
-    filter: opacity(0);
-  }
+	from {
+		filter: opacity(100%);
+	}
+	to {
+		filter: opacity(0);
+	}
 }
 
 .splash .text {
-  white-space: nowrap;
+	white-space: nowrap;
 }
 
 .splash .icon {
-  height: 100%;
-  object-fit: contain;
+	height: 100%;
+	object-fit: contain;
 }
