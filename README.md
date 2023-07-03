@@ -12,7 +12,9 @@ Spotify で再生中の曲を表示する動く壁紙
 [Wallpaper Engine](https://store.steampowered.com/app/431960/Wallpaper_Engine/) をインストール後、
 [ワークショップ](https://steamcommunity.com/sharedfiles/filedetails/?id=2782322519)でサブスクライブ
 
-[ワークショップ](https://steamcommunity.com/sharedfiles/filedetails/?id=2782322519)の説明通り、[このページ](https://secchanu.com/app/spotify-wallpaper/token)で認証し、表示された文字列を Wallpaper Engine 上の Spotify-Wallpaper のプロパティ内にある refresh_token に入力
+ワークショップの説明通り、
+[認証ページ](https://secchanu.com/app/spotify-wallpaper/token)から Spotify にログインし、
+表示された文字列を Wallpaper Engine で開いた Spotify-Wallpaper のプロパティ内にある "refresh_token" に入力
 
 その他プロパティからカスタマイズもできます
 
@@ -30,4 +32,4 @@ Spotify で再生中の曲を表示する動く壁紙
 
 ライブラリ: React
 
-ビルド: Webpack + Babel
+ビルド: webpack + Babel

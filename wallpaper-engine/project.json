@@ -1,14 +1,14 @@
 {
 	"contentrating" : "Everyone",
-	"description" : "※非公式です\n\n[url=https://secchanu.com/app/spotify-wallpaper/token]このリンク[/url] からSpotifyでログインし、表示された文字列をプロパティのrefresh_tokenに入力してください。\n\n曲の操作はSpotify Premiumユーザーのみ利用可能です。\n\nプリセットにtokenを含んだまま公開しないように注意してください。\n\n[url=https://github.com/secchanu/spotify-wallpaper]ソースコード[/url]",
+	"description" : "※非公式です\n\n[url=https://secchanu.com/app/spotify-wallpaper/token]認証ページ[/url] からSpotifyでログインし、表示された文字列をプロパティのrefresh_tokenに入力してください。\n\n曲の操作はSpotify Premiumユーザーのみ利用可能です。\n\nプリセットにtokenを含んだまま公開しないように注意してください。\n\n[url=https://github.com/secchanu/spotify-wallpaper]ソースコード[/url]",
 	"file" : "index.html",
-	"general" : 
+	"general" :
 	{
-		"properties" : 
+		"properties" :
 		{
-			"bottomleft" : 
+			"bottomleft" :
 			{
-				"options" : 
+				"options" :
 				[
 					{
 						"label" : "song",
@@ -36,9 +36,9 @@
 				"type" : "combo",
 				"value" : "user"
 			},
-			"bottomright" : 
+			"bottomright" :
 			{
-				"options" : 
+				"options" :
 				[
 					{
 						"label" : "song",
@@ -66,47 +66,47 @@
 				"type" : "combo",
 				"value" : "control"
 			},
-			"contentsSettings" : 
+			"contentsSettings" :
 			{
 				"order" : 200,
 				"text" : "<br/><br/><h3>Contents Settings</h3>"
 			},
-			"marginSettings" : 
+			"marginSettings" :
 			{
 				"order" : 300,
 				"text" : "<br/><br/><h3>Margin Settings</h3>"
 			},
-			"marginbottom" : 
+			"marginbottom" :
 			{
 				"order" : 302,
 				"text" : "margin-bottom",
 				"type" : "textinput",
 				"value" : "48"
 			},
-			"marginleft" : 
+			"marginleft" :
 			{
 				"order" : 303,
 				"text" : "margin-left",
 				"type" : "textinput",
 				"value" : "0"
 			},
-			"marginright" : 
+			"marginright" :
 			{
 				"order" : 304,
 				"text" : "margin-right",
 				"type" : "textinput",
 				"value" : "0"
 			},
-			"margintop" : 
+			"margintop" :
 			{
 				"order" : 301,
 				"text" : "margin-top",
 				"type" : "textinput",
 				"value" : "0"
 			},
-			"progressbar" : 
+			"progressbar" :
 			{
-				"options" : 
+				"options" :
 				[
 					{
 						"label" : "top",
@@ -130,33 +130,33 @@
 				"type" : "combo",
 				"value" : "top"
 			},
-			"progressbarblank" : 
+			"progressbarblank" :
 			{
 				"order" : 205,
 				"text" : "<br/>"
 			},
-			"refresh_token" : 
+			"refresh_token" :
 			{
 				"order" : 101,
 				"text" : "Refresh Token<br/><small>Check the workshop page to see a guide on how to generate a token.</small><br/><br/>",
 				"type" : "textinput",
 				"value" : ""
 			},
-			"schemecolor" : 
+			"schemecolor" :
 			{
 				"order" : 0,
 				"text" : "ui_browse_properties_scheme_color",
 				"type" : "color",
 				"value" : "0.09803921568627451 0.0784313725490196 0.0784313725490196"
 			},
-			"spotifySettings" : 
+			"spotifySettings" :
 			{
 				"order" : 100,
 				"text" : "<h3>Spotify Settings</h3>"
 			},
-			"topleft" : 
+			"topleft" :
 			{
-				"options" : 
+				"options" :
 				[
 					{
 						"label" : "song",
@@ -184,9 +184,9 @@
 				"type" : "combo",
 				"value" : "song"
 			},
-			"topright" : 
+			"topright" :
 			{
-				"options" : 
+				"options" :
 				[
 					{
 						"label" : "song",
