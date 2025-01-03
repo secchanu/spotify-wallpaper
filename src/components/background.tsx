@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import useViewSize from "./useViewSize";
 import useAudioListener from "./useAudioListener";
 
-import Vibrant from "node-vibrant";
+import { Vibrant } from "node-vibrant/browser";
 
 import styles from "../styles/background.module.css";
 
@@ -27,7 +27,7 @@ const Component: FunctionComponent<Props> = (props) => {
 	const image = playbackState?.item?.album.images.at(0)?.url;
 	const playing = playbackState?.is_playing;
 
-	const prevImage = useRef<string>();
+	const prevImage = useRef<string>(undefined);
 	const [color, setColor] = useState<string>();
 	const [keepImage, setKeepImage] = useState<string>();
 	const canvas = useRef<HTMLCanvasElement>(null);
@@ -39,7 +39,7 @@ const Component: FunctionComponent<Props> = (props) => {
 		prevImage.current = image;
 		if (image) {
 			const vibrant = Vibrant.from(image);
-			vibrant.getPalette((_, palette) => setColor(palette?.Muted?.hex));
+			vibrant.getPalette().then((palette) => setColor(palette?.Muted?.hex));
 		}
 	}
 
@@ -111,7 +111,7 @@ const Component: FunctionComponent<Props> = (props) => {
 					) : (
 						<img
 							className={`${styles.background} ${styles.logo}`}
-							src={keepImage ? keepImage : spotify_logo.src ?? spotify_logo}
+							src={keepImage ? keepImage : (spotify_logo.src ?? spotify_logo)}
 							alt=""
 						/>
 					)}

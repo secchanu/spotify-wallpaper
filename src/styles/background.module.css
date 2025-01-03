@@ -48,7 +48,9 @@
 	width: 50vmin;
 	border-radius: 50%;
 	filter: opacity(0);
-	animation: toVisible 1s 1.5s forwards, rotation 30s linear 3s infinite;
+	animation:
+		toVisible 1s 1.5s forwards,
+		rotation 30s linear 3s infinite;
 }
 .playing .disk {
 	animation-play-state: running, running;

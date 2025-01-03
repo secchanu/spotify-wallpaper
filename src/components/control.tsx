@@ -147,7 +147,7 @@ const Component: FunctionComponent<Props> = (props) => {
 				</div>
 				<div className={styles.volume}>
 					<span className={`material-symbols-outlined ${styles.icon}`}>
-						{vol ?? volume ? "volume_up" : "volume_off"}
+						{(vol ?? volume) ? "volume_up" : "volume_off"}
 					</span>
 					<input
 						type="range"

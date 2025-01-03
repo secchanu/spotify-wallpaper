@@ -18,7 +18,7 @@ const Component: FunctionComponent<Props> = (props) => {
 	const item = playbackState?.item;
 
 	const [oldItem, setOldItem] = useState<SpotifyApi.TrackObjectFull | null>();
-	const prevItem = useRef<SpotifyApi.TrackObjectFull | null>();
+	const prevItem = useRef<SpotifyApi.TrackObjectFull | null>(undefined);
 	const [width, height] = useViewSize();
 
 	if (item?.id !== prevItem.current?.id) {

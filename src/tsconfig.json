@@ -5,8 +5,7 @@
 		"module": "ESNext",
 		"lib": ["ESNext", "DOM"],
 		"jsx": "react-jsx",
-		"noEmit": true,
-		"types": ["webpack-env"]
+		"noEmit": true
 	},
 	"include": ["**/*.ts", "**/*.tsx"]
 }

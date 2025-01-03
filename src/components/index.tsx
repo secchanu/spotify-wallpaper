@@ -25,7 +25,7 @@ const Component: FunctionComponent<Props> = (props) => {
 	const audio = props.audio ?? false;
 
 	const valid = useRef(false);
-	const expires_at = useRef<number>();
+	const expires_at = useRef<number>(undefined);
 	const [token, setToken] = useState<string | null>(null);
 
 	spotifyApi.setAccessToken(token);

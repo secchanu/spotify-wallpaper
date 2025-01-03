@@ -19,7 +19,9 @@
 	height: 100%;
 	background-color: var(--spotify-color-black);
 	filter: opacity(0);
-	animation: toDark 0.5s forwards, toDark 0.5s 2.5s reverse forwards;
+	animation:
+		toDark 0.5s forwards,
+		toDark 0.5s 2.5s reverse forwards;
 }
 @keyframes toDark {
 	from {
@@ -45,7 +47,9 @@
 
 .old {
 	border-radius: 50%;
-	animation: rotation 0.5s forwards, toLeft 1s 0.5s forwards;
+	animation:
+		rotation 0.5s forwards,
+		toLeft 1s 0.5s forwards;
 }
 @keyframes rotation {
 	from {
@@ -66,7 +70,9 @@
 
 .new {
 	transform: translateX(100vw) scale(1.4);
-	animation: toCenter 1s 0.5s forwards, toDisk 0.5s 1.5s forwards,
+	animation:
+		toCenter 1s 0.5s forwards,
+		toDisk 0.5s 1.5s forwards,
 		toSmall 1s cubic-bezier(0.5, -0.3, 0.5, 0.7) 2s forwards;
 }
 @keyframes toCenter {

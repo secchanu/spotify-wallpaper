@@ -60,7 +60,9 @@ const Component: FunctionComponent<Props> = (props) => {
 		const neighborType = neighborElem?.getAttribute("about");
 		const space =
 			width -
-			(neighborType === "song" ? 0.5 * width : neighborElem?.clientWidth ?? 0) -
+			(neighborType === "song"
+				? 0.5 * width
+				: (neighborElem?.clientWidth ?? 0)) -
 			(progressElem.current?.clientWidth ?? 0) -
 			((margin.at(1) ?? 0) + (margin.at(3) ?? 0)) -
 			100;
